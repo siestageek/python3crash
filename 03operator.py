@@ -92,3 +92,20 @@ print(bool(1), bool('abc'))
 print(0 and 'abc', 1 and 'abc')
 print('' or 'abc', '' and 'abc')
 
+
+# 문자열 서식화formatting하기
+# 문자열에서 특정부분만 바뀌고 나머지는 변화가 없는 경우
+# 문자열 서식화를 이용하면 편리하게 적용 가능
+print('이름 : 홍길동, 나이 : 25')
+
+name, age = '홍길동', 25
+print('이름 :', name, ', 나이 :', age)
+
+# % 서식 - 서식문자열 사용
+print('이름 : %s, 나이 : %d' % (name, age))
+
+# .format
+print('이름 : {}, 나이 : {}'.format(name, age))
+
+# f-string
+print(f'이름 : {name}, 나이 : {age}')
