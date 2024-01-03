@@ -24,8 +24,31 @@ def show_menu():
     return menu
 
 
+def input_employee():
+    emp = {}
+    emp['empno'] = input('사원번호는?')
+    emp['fname'] = input('이름은?')
+    emp['lname'] = input('성은?')
+    emp['email'] = input('이메일은?')
+    emp['hdate'] = input('입사일은?')
+    emp['jobid'] = input('직책은?')
+    emp['sal'] = input('급여는?')
+    emp['deptid'] = input('부서번호는?')
+    return emp
+
+
+def save_employee(emp):
+    row = (f"{emp['empno']},{emp['fname']},{emp['lname']},"
+           f"{emp['email']},{emp['hdate']},{emp['jobid']},"
+           f"{emp['sal']},{emp['deptid']}\n")
+    with open('employees.csv', 'a') as f:
+        f.write(row)
+
+
 def add_employee():
     print('사원 정보를 등록합니다...')
+    emp = input_employee()
+    save_employee(emp)
 
 
 def read_employee():
