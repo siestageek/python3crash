@@ -73,8 +73,18 @@ def load_sungjuk():
     except:
         pass     # 프로그램 실행 중단없이 다음 코드 실행1
 
+
 def showone_sungjuk():
-    return None
+    name = input('상세 조회할 학생이름은?')
+
+    info = '찾는 데이터가 없어요!!'
+    for sj in sjs['response']['body']['items']:
+        if sj['name'] == name:
+            info = f"{sj['name']} {sj['kor']} {sj['eng']} {sj['mat']} "\
+                   f"{sj['tot']} {sj['avg']} {sj['grd']}"
+            break  # 찾고나면 검색 작업 중단
+
+    print(info)
 
 
 def modify_sungjuk():
