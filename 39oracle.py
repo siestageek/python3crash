@@ -1,5 +1,6 @@
 # 오라클디비로 데이터 다루기 1 - select
 # cx_Oracle 모듈을 먼저 설치해야 함 - pip install cx_Oracle
+# cx-oracle.readthedocs.io/en/latest/user_guide/installation.html
 
 # 1) Oracle instant client 버젼에 따라 VS 재배포 패키지 설치
 # 2) Oracle instant client를 다운로드하고, c:/Java에 압축해제
@@ -14,7 +15,15 @@
 # 텍스트 컬럼은 자동으로 CLOB 타입으로 설정
 # CLOB가 꼭 필요한 컬럼을 제외하고 varchar 타입으로 바꿀 것을 추천!!
 
+# 2024-01-08 기준
+# cx_Oracle 모듈이 oracledb로 업그레이드 됨
+# oracle instant client없이 데이터베이스 관련 작업 가능!
+# pip install oracledb
+# https://python-oracledb.readthedocs.io/en/latest/user_guide/installation.html
+
+
 import cx_Oracle
+import oracledb
 
 host = '15.165'
 userid = ''
@@ -22,8 +31,10 @@ passwd = ''
 sid = 'FREE'
 
 # 디비 서버에 연결
-dsn_tns = cx_Oracle.makedsn(host, 1521, sid)
-conn = cx_Oracle.connect(userid, passwd, dsn_tns)
+# dsn_tns = cx_Oracle.makedsn(host, 1521, sid)
+# conn = cx_Oracle.connect(userid, passwd, dsn_tns)
+dsn_tns = oracledb.makedsn(host, 1521, sid)
+conn = oracledb.connect(user=userid, password=passwd, dsn=dsn_tns)
 
 cursor = conn.cursor()
 
@@ -55,8 +66,10 @@ conn.close()
 
 
 # 승선위치별(embark_town) 성별(sex) 생존자수(alive) 조회
-dsn_tns = cx_Oracle.makedsn(host, 1521, sid)
-conn = cx_Oracle.connect(userid, passwd, dsn_tns)
+# dsn_tns = cx_Oracle.makedsn(host, 1521, sid)
+# conn = cx_Oracle.connect(userid, passwd, dsn_tns)
+dsn_tns = oracledb.makedsn(host, 1521, sid)
+conn = oracledb.connect(user=userid, password=passwd, dsn=dsn_tns)
 
 cursor = conn.cursor()
 
@@ -73,8 +86,10 @@ conn.close()
 
 
 # 승선위치별(embark_town) 사람별(who) 생존자수(alive) 조회
-dsn_tns = cx_Oracle.makedsn(host, 1521, sid)
-conn = cx_Oracle.connect(userid, passwd, dsn_tns)
+# dsn_tns = cx_Oracle.makedsn(host, 1521, sid)
+# conn = cx_Oracle.connect(userid, passwd, dsn_tns)
+dsn_tns = oracledb.makedsn(host, 1521, sid)
+conn = oracledb.connect(user=userid, password=passwd, dsn=dsn_tns)
 
 cursor = conn.cursor()
 
