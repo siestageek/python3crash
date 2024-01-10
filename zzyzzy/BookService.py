@@ -20,7 +20,7 @@ def show_menu():
 5. 도서 데이터 삭제
 0. 프로그램 종료
 --------------------
-    '''
+'''
     print(main_menu, end='')
     menu = input('=> 메뉴를 선택하세요 : ')
     return menu
@@ -58,11 +58,17 @@ def new_book():
 # 모든 도서 데이터 출력
 def read_book():
     """
-    모든 도서 데이터 출력 (번호/도서명/저자//출판사/판매가)
+    모든 도서 데이터 출력 (번호/도서명/저자/출판사/판매가)
     :return:
     """
     print('도서데이터 조회')
-    pass
+    result = ''
+
+    rows = BookDAO.select_book()
+    for row in rows:
+        result += f'{row[0]} {row[1]} {row[2]} {row[3]} {row[4]:,}\n'
+
+    print(result)
 
 
 # 도서 데이터 상세 조회
