@@ -27,14 +27,32 @@ def show_menu():
 
 
 # 도서 데이터 추가 (입력-처리-저장)
+def input_book():
+    bkname = input('도서명은?')
+    author = input('도서 저자는?')
+    publisher = input('도서 출판사는?')
+    pubdate = input('도서 출간일은?')
+    retail = int(input('도서 소매가는?'))
+    pctoff = int(input('도서 할인율은?'))
+
+    bk = Book(bkname,author,publisher,pubdate,retail,pctoff)
+
+    bk.price = bk.retail * (1 - (bk.pctoff/100))
+    bk.mileage = bk.retail * (bk.pctoff/100)
+
+    return bk
+
+
 def new_book():
     """
     도서 데이터 추가 (입력-처리-저장)
     :return: 
     """
     print('도서데이터 추가')
+    bk = input_book()
 
-    pass
+    rowcnt = BookDAO.insert_book(bk)
+    print(f'{rowcnt} 건의 도서데이터 등록됨!!')
 
 
 # 모든 도서 데이터 출력
