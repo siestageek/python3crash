@@ -3,10 +3,11 @@ import zzyzzy.dbinfo2 as dbinfo
 insertsql = 'insert into book (bkname, author, publisher, pubdate, retail,'\
              'price, pctoff, mileage) values (%s, %s, %s, %s, %s, %s, %s, %s) '
 selectsql = 'select bkno, bkname, author,publisher,price from book'
-selectonesql = 'select * from book where bkno = %s'
+selectonesql = 'select * from book where bkname = %s'
 updatesql = 'update book set bkname = %s, author = %s, publisher = %s,' \
             'pubdate = %s, retail = %s, pctoff = %s where bkno = %s'
 deletesql = 'delete from book where bkno = %s'
+
 
 class BookDAO:
     @staticmethod
@@ -35,8 +36,15 @@ class BookDAO:
 
 
     @staticmethod
-    def selectone_book(self):
-        pass
+    def selectone_book(bkname):
+        cursor,conn = dbinfo.openConn()
+
+        cursor.execute(selectonesql, [bkname])
+        row = cursor.fetchone()
+
+        dbinfo.closeConn(cursor, conn)
+        return row
+
 
     @staticmethod
     def update_book(self):
