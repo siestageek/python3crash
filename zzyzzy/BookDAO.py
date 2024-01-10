@@ -51,5 +51,13 @@ class BookDAO:
         pass
 
     @staticmethod
-    def delete_book(self):
-        pass
+    def delete_book(bkno):
+        cursor,conn = dbinfo.openConn()
+
+        cursor.execute(deletesql, [bkno])
+        conn.commit()
+        rowcnt = cursor.rowcount
+
+        dbinfo.closeConn(cursor, conn)
+        return rowcnt
+

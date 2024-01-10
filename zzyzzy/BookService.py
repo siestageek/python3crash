@@ -104,7 +104,9 @@ def remove_book():
     :return:
     """
     bkno = input('삭제할 도서번호는?')
-    pass
+
+    rowcnt = BookDAO.delete_book(bkno)
+    print(f'{rowcnt} 건의 도서데이터 삭제됨!!')
 
 
 # 도서처리 프로그램 종료
