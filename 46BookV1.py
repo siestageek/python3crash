@@ -1,10 +1,12 @@
 # 도서관리 프로그램 V1
-# 도서명, 저자, 역자, 출판사, 출간일, 정가, 판매가, 할인율, 적립금
+# 도서명, 저자, 출판사, 출간일, 정가, 판매가, 할인율, 적립금
 # bkname, author, publisher, pubdate
 # retail, price, pctoff, mileage
 # 도서 데이터는 데이터베이스 테이블에 저장
 # 클래스 기반으로 재작성
-import zzyzzy.BookService as bksrv
+from zzyzzy.BookService import BookService as bksrv
+# BookService를 클래스로 변경했기 때문에
+# from ~ import 구문으로 바꿔 객체 사용
 
 while True:
     # 프로그램 주 실행부
