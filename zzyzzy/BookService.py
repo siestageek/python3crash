@@ -72,7 +72,6 @@ class BookService:
             bk = BookService.__input_book()
 
             rowcnt = BookDAO.insert_book(bk)
-            print(f'{rowcnt} 건의 도서데이터 등록됨!!')
         except:
             print('BookService - new_book에서 오류발생!!')
             exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -80,6 +79,8 @@ class BookService:
             print('예외내용 :', exc_obj)
             print('예외종류 :', exc_type.__name__)
             print('예외위치 :', fname, exc_tb.tb_lineno)
+        finally:
+            print(f'{rowcnt} 건의 도서데이터 등록됨!!')
 
 
     # 모든 도서 데이터 출력
